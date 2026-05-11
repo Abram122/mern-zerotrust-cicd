@@ -222,7 +222,3 @@ A clear folder structure is the hallmark of a senior-led project.
 
 ## 📜 Final Note to Reviewers
 This project represents a commitment to high-standard software engineering. From the **Zero-Trust pre-commit hooks** to the **Automated Security Audits**, every line of code is protected by a multi-layered validation system.
-
----
-
-*Generated with ❤️ by Antigravity - Your Senior Coding Assistant.*
