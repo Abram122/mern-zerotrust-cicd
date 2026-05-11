@@ -1,5 +1,9 @@
 # 🚀 MERN Stack Professional - Lecture Assignment System
 
+![CI/CD Pipeline](https://img.shields.io/github/actions/workflow/status/<your-username>/<your-repo-name>/ci.yml?branch=main&label=CI%2FCD%20Pipeline&style=for-the-badge)
+![Security Audit](https://img.shields.io/badge/Security-Audited-brightgreen?style=for-the-badge)
+![Maintenance](https://img.shields.io/badge/Maintained%20by-Dependabot-blue?style=for-the-badge)
+
 Welcome to the **MERN Stack Professional Architecture** repository. This project is a demonstration of industry-leading practices in full-stack development, automated testing, and Continuous Integration/Continuous Deployment (CI/CD).
 
 Designed as a high-quality handoff document, this README provides an exhaustive breakdown of the system architecture, the advanced "Quality Gate" automation, and step-by-step instructions for developers of all skill levels.
@@ -38,6 +42,30 @@ This application is built using the **MERN stack** (MongoDB, Express, React, Nod
 ---
 
 ## 🏗️ Core Architecture
+
+### System Workflow Diagram
+```mermaid
+graph TD
+    User((Developer)) -->|Git Commit| Husky[Husky Git Hooks]
+    Husky -->|Pre-commit| Lint[Linting / Tests]
+    User -->|Git Push| GitHub[GitHub Repository]
+    GitHub -->|Trigger| GHA[GitHub Actions CI/CD]
+    
+    subgraph "Local Environment"
+        Lint
+    end
+
+    subgraph "Cloud Pipeline"
+        GHA --> Build[Build Verification]
+        GHA --> Security[Security Audit]
+        GHA --> Test[Test Suites]
+    end
+    
+    subgraph "Application Stack"
+        React[React/Vite Frontend] <--> Express[Express.js API]
+        Express <--> Mongo[(MongoDB)]
+    end
+```
 
 The project follows a decoupled, client-server architecture.
 
@@ -178,6 +206,18 @@ The repository is integrated with **GitHub Dependabot**.
 We use stateless JSON Web Tokens for authentication.
 - **Frontend:** Tokens are stored in memory or secure storage.
 - **Backend:** Middleware `auth.js` verifies the token on every protected route.
+
+---
+
+## 🔌 API Documentation
+
+| Endpoint | Method | Description | Auth Required |
+| :--- | :--- | :--- | :--- |
+| `/api/auth/register` | POST | Register a new student | No |
+| `/api/auth/login` | POST | Login with email/password | No |
+| `/api/user/profile` | GET | Retrieve user details | **Yes** (JWT) |
+| `/api/user/profile` | PUT | Update user info | **Yes** (JWT) |
+| `/api/user/profile/image` | POST | Upload JPG profile photo | **Yes** (JWT) |
 
 ---
 
