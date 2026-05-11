@@ -38,23 +38,25 @@ The objective of this integration is to ensure code quality, prevent regressions
 The workflow is defined in `.github/workflows/ci.yml`.
 * **Triggers:** Executes on `push` and `pull_request` to the `main` or `master` branches.
 * **Environment:** Runs on a clean `ubuntu-latest` virtual machine using Node.js v20.
-* **Parallel Execution:** The workflow defines two separate jobs: `test-backend` and `test-frontend`.
-  * **Steps executed per job:**
-    1. Check out the repository code.
-    2. Setup Node.js environment.
-    3. Navigate to the respective directory (`./backend` or `./frontend`).
-    4. Install dependencies (`npm install`).
-    5. Execute the test suite (`npm test`).
+* **Advanced Pipeline Jobs:**
+  * **Backend Quality Gate:** Runs dependency security audits (`npm audit`) and tests with code coverage analysis.
+  * **Frontend Quality Gate:** Runs code linting (`ESLint`), verifies production build success (`npm run build`), and executes unit tests.
 
 ---
 
 ## 🚀 How to Run Tests Locally
 
 ### Backend
-Navigate to the backend directory and run the test script:
+Navigate to the backend directory and run:
 ```bash
 cd backend
 npm test
+```
+
+### Unified Local Quality Gate (Recommended)
+As a senior practice, you can run all CI/CD checks (Audit, Lint, Build, and Tests) at once from the root directory before pushing your code:
+```powershell
+./check-quality.ps1
 ```
 *Note: You do not need to start your local MongoDB server; the tests will spin up their own isolated instance.*
 
@@ -65,6 +67,20 @@ cd frontend
 npm test
 ```
 *Note: Vitest runs in watch mode by default. If you make changes to a component, the test will automatically re-run.*
+
+---
+
+## 🛡️ Automated Safety & Maintenance
+
+### 1. Git Hooks (Husky)
+The project is configured with **Husky** to prevent broken code from being committed. 
+- **Pre-commit Hook:** Every time you run `git commit`, the system automatically runs `lint-staged` (to check your changed frontend files) and the backend test suite. 
+- If these fail, the commit is blocked, ensuring the repository remains stable.
+
+### 2. Automated Updates (Dependabot)
+GitHub **Dependabot** is integrated to monitor dependencies in both `./frontend` and `./backend`.
+- It will automatically open Pull Requests for security vulnerabilities and version updates.
+- Our CI/CD pipeline will verify these updates automatically.
 
 ---
 

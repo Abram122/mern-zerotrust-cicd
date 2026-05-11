@@ -1,0 +1,22 @@
+{
+  "name": "lecture-assignment-mern",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root management for MERN project quality gates",
+  "scripts": {
+    "prepare": "husky",
+    "test:all": "powershell ./check-quality.ps1",
+    "lint:frontend": "npm run lint --prefix frontend",
+    "test:backend": "npm test --prefix backend",
+    "test:frontend": "npm test --prefix frontend"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3"
+  },
+  "lint-staged": {
+    "frontend/src/**/*.{js,jsx}": [
+      "npm run lint --prefix frontend"
+    ]
+  }
+}
