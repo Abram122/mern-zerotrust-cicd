@@ -6,14 +6,19 @@ import { Eye, EyeOff } from 'lucide-react';
 const Profile = () => {
     const { user, setUser } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
-    const [formData, setFormData] = useState({ fullName: '', email: '', password: '' });
+    const [formData, setFormData] = useState({ 
+        fullName: user?.fullName || '', 
+        email: user?.email || '', 
+        password: '' 
+    });
     const [image, setImage] = useState(null);
     const [message, setMessage] = useState({ type: '', text: '' });
     const [uploading, setUploading] = useState(false);
     
+    // Initial sync if user data arrives after first render
     useEffect(() => {
         if (user && formData.email === '') {
-            setFormData({ fullName: user.fullName || '', email: user.email || '', password: '' });
+            setFormData(prev => ({ ...prev, fullName: user.fullName || '', email: user.email || '' }));
         }
     }, [user, formData.email]);
 
