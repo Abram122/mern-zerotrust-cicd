@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
@@ -12,10 +12,10 @@ const Profile = () => {
     const [uploading, setUploading] = useState(false);
     
     useEffect(() => {
-        if (user) {
+        if (user && formData.email === '') {
             setFormData({ fullName: user.fullName || '', email: user.email || '', password: '' });
         }
-    }, [user]);
+    }, [user, formData.email]);
 
     const { fullName, email, password } = formData;
 

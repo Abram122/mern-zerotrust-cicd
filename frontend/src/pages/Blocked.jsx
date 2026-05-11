@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Blocked = () => {
     return (
         <div className="flex justify-center items-center min-h-[80vh]">
