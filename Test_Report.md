@@ -1,4 +1,4 @@
-# Software Testing Report: Student Portal Web Application
+# QA Report: Zero-Trust CI/CD Automation & Dependabot
  
  **Team:** Professional Quality Assurance Team
 - **Status:** All Tests Passed ✅
