@@ -1,6 +1,6 @@
 # 🚀 MERN Stack Professional - Lecture Assignment System
 
-![CI/CD Pipeline](https://img.shields.io/github/actions/workflow/status/<your-username>/<your-repo-name>/ci.yml?branch=main&label=CI%2FCD%20Pipeline&style=for-the-badge)
+![CI/CD Pipeline](https://img.shields.io/github/actions/workflow/status/Abram122/Testing_Assignemnt_Lecture/ci.yml?branch=main&label=CI%2FCD%20Pipeline&style=for-the-badge)
 ![Security Audit](https://img.shields.io/badge/Security-Audited-brightgreen?style=for-the-badge)
 ![Maintenance](https://img.shields.io/badge/Maintained%20by-Dependabot-blue?style=for-the-badge)
 
@@ -166,8 +166,8 @@ Follow these steps precisely to get your environment running in minutes.
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd Lecture_Assignemnt_Lecture
+git clone https://github.com/Abram122/Testing_Assignemnt_Lecture.git
+cd Testing_Assignemnt_Lecture
 ```
 
 ### 2. Root Environment Setup
@@ -182,7 +182,7 @@ npm install
 3. Create a `.env` file based on the provided examples:
    ```env
    PORT=5000
-   MONGO_URI=mongodb://localhost:27017/lecture_db
+   MONGODB_URI=mongodb://localhost:27017/lecture_db
    JWT_SECRET=your_super_secret_key
    ```
 4. Start the server: `npm run dev`
@@ -260,5 +260,12 @@ A clear folder structure is the hallmark of a senior-led project.
 
 ---
 
-## 📜 Final Note to Reviewers
+## ⚖️ License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📜 Final Note
 This project represents a commitment to high-standard software engineering. From the **Zero-Trust pre-commit hooks** to the **Automated Security Audits**, every line of code is protected by a multi-layered validation system.
+
+**Developed with ❤️ by the Professional Development Team.**

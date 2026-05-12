@@ -31,7 +31,17 @@ describe('Auth API Endpoints', () => {
                 password: 'wrongpassword'
             });
 
-        // The exact status depends on the implementation, but shouldn't be 200
         expect(res.statusCode).not.toBe(200);
+    });
+
+    test('POST /api/auth/register should fail for invalid data', async () => {
+        const res = await request(app)
+            .post('/api/auth/register')
+            .send({
+                email: 'invalid-email',
+                password: '123'
+            });
+
+        expect(res.statusCode).toBe(400);
     });
 });

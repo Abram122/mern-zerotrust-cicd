@@ -14,13 +14,6 @@ const Profile = () => {
     const [image, setImage] = useState(null);
     const [message, setMessage] = useState({ type: '', text: '' });
     const [uploading, setUploading] = useState(false);
-    
-    // Initial sync if user data arrives after first render
-    useEffect(() => {
-        if (user && formData.email === '') {
-            setFormData(prev => ({ ...prev, fullName: user.fullName || '', email: user.email || '' }));
-        }
-    }, [user, formData.email]);
 
     const { fullName, email, password } = formData;
 

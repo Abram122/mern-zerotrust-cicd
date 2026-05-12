@@ -17,6 +17,9 @@
   "lint-staged": {
     "frontend/src/**/*.{js,jsx}": [
       "npm run lint --prefix frontend"
+    ],
+    "backend/**/*.js": [
+      "npm test --prefix backend"
     ]
   }
 }
